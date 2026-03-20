@@ -145,5 +145,6 @@ def submit_lead():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == '__main__':
-    # Standard Flask run
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # Use Waitress for production server on Windows
+    from waitress import serve
+    serve(app, host='0.0.0.0', port=5000)
